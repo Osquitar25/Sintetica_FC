@@ -38,13 +38,13 @@
     <div class="form-header">
       <span class="form-icono">⚽</span>
       <span class="form-titulo">Iniciar Sesión</span>
-      <span class="form-sub">Ingresa tus credenciales</span>
+      <span class="form-sub">Completa tus datos</span>
     </div>
 
     <form id="loginForm" onsubmit="return false;">
       <div class="campo">
         <label>Correo electrónico</label>
-        <input id="loginEmail" type="email" placeholder="tucorreo@email.com" required>
+        <input id="loginEmail" type="email" placeholder="correo@email.com" required>
       </div>
       <div class="campo">
         <label>Contraseña</label>
@@ -74,20 +74,20 @@
       <div class="fila">
         <div class="campo">
           <label>Nombre</label>
-          <input id="regNombre" type="text" placeholder="Juan" required>
+          <input id="regNombre" type="text" placeholder="James" required>
         </div>
         <div class="campo">
           <label>Apellido</label>
-          <input id="regApellido" type="text" placeholder="Pérez" required>
+          <input id="regApellido" type="text" placeholder="Rodriguez" required>
         </div>
       </div>
       <div class="campo">
         <label>Correo electrónico</label>
-        <input id="regEmail" type="email" placeholder="tucorreo@email.com" required>
+        <input id="regEmail" type="email" placeholder="correo@email.com" required>
       </div>
       <div class="campo">
         <label>Teléfono</label>
-        <input id="regTelefono" type="tel" placeholder="300 000 0000">
+        <input id="regTelefono" type="tel" placeholder="300 000 0000" maxlength="10" pattern="[0-9]{10}" title="Ingresa exactamente 10 dígitos">
       </div>
       <div class="campo">
         <label>Contraseña</label>

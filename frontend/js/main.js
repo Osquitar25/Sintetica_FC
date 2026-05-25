@@ -41,7 +41,7 @@ async function login() {
       } else {
         window.location.href = 'reserva.html';
       }
-    }, 800);
+    }, 500);
 
   } catch (e) {
     mostrarMsg('loginMsg', 'No se pudo conectar con el servidor.', 'error');
@@ -82,7 +82,7 @@ async function registro() {
     setTimeout(() => {
       volver();
       mostrar('loginScreen');
-    }, 1500);
+    }, 500);
 
   } catch (e) {
     mostrarMsg('regMsg', 'No se pudo conectar con el servidor.', 'error');
