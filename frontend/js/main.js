@@ -1,4 +1,4 @@
-const API = 'http://127.0.0.1:3001/api';
+const API = 'https://sinteticafc-production.up.railway.app/api';
 
 // ─── Mostrar mensaje en formulario ─────────────────────────────────
 function mostrarMsg(id, texto, tipo) {
