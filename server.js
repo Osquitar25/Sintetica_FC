@@ -13,10 +13,11 @@ app.use(express.static(path.join(__dirname, 'frontend')));
 const JWT_SECRET = 'sintetica_2026';
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Elcrack2512+',        
-  database: 'sintetica'
+  host: process.env.DB_HOST || 'localhost',
+  port: process.env.DB_PORT || 3306,
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'Elcrack2512+',
+  database: process.env.DB_NAME || 'sintetica'
 });
 
 db.connect((err) => {
