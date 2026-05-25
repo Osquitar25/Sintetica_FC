@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sintética FC – Acceso</title>
+  <link rel="stylesheet" href="css/estilos_for.css">
+</head>
+<body>
+
+<!-- ══════════════ PANTALLA PRINCIPAL ══════════════ -->
+<div id="principal">
+  <div class="logo-area">
+    <span class="logo-icono">⚽</span>
+    <span class="logo-titulo">SINTÉTICA</span>
+    <span class="logo-sub">Sistema de Reserva de Canchas</span>
+  </div>
+
+  <p class="selecciona">¿Qué deseas hacer?</p>
+
+  <div id="opciones">
+    <div class="card card-login" onclick="mostrar('loginScreen')">
+      <span class="card-icono">🔐</span>
+      <span class="card-label">Iniciar Sesión</span>
+      <span class="card-desc">Ya tengo una cuenta y quiero reservar mi cancha</span>
+    </div>
+
+    <div class="card card-reg" onclick="mostrar('regScreen')">
+      <span class="card-icono">📋</span>
+      <span class="card-label">Registrarse</span>
+      <span class="card-desc">Soy nuevo y quiero crear mi cuenta</span>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════ LOGIN ══════════════ -->
+<div id="loginScreen" class="screen">
+  <div class="form-card">
+    <div class="form-header">
+      <span class="form-icono">⚽</span>
+      <span class="form-titulo">Iniciar Sesión</span>
+      <span class="form-sub">Ingresa tus credenciales</span>
+    </div>
+
+    <form id="loginForm" onsubmit="return false;">
+      <div class="campo">
+        <label>Correo electrónico</label>
+        <input id="loginEmail" type="email" placeholder="tucorreo@email.com" required>
+      </div>
+      <div class="campo">
+        <label>Contraseña</label>
+        <input id="loginPwd" type="password" placeholder="••••••••" required>
+      </div>
+
+      <div id="loginMsg" class="msg"></div>
+
+      <div class="btns">
+        <button class="btn btn-verde" onclick="login()">Entrar</button>
+        <button class="btn btn-secondary" onclick="volver()">Volver</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- ══════════════ REGISTRO ══════════════ -->
+<div id="regScreen" class="screen">
+  <div class="form-card">
+    <div class="form-header">
+      <span class="form-icono">📋</span>
+      <span class="form-titulo">Crear Cuenta</span>
+      <span class="form-sub">Completa tus datos</span>
+    </div>
+
+    <form id="regForm" onsubmit="return false;">
+      <div class="fila">
+        <div class="campo">
+          <label>Nombre</label>
+          <input id="regNombre" type="text" placeholder="Juan" required>
+        </div>
+        <div class="campo">
+          <label>Apellido</label>
+          <input id="regApellido" type="text" placeholder="Pérez" required>
+        </div>
+      </div>
+      <div class="campo">
+        <label>Correo electrónico</label>
+        <input id="regEmail" type="email" placeholder="tucorreo@email.com" required>
+      </div>
+      <div class="campo">
+        <label>Teléfono</label>
+        <input id="regTelefono" type="tel" placeholder="300 000 0000">
+      </div>
+      <div class="campo">
+        <label>Contraseña</label>
+        <input id="regPwd" type="password" placeholder="••••••••" required>
+      </div>
+
+      <div id="regMsg" class="msg"></div>
+
+      <div class="btns">
+        <button class="btn btn-oro" onclick="registro()">Registrar</button>
+        <button class="btn btn-secondary" onclick="volver()">Volver</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<script>
+  function mostrar(id) {
+    document.getElementById('principal').style.display = 'none';
+    document.getElementById(id).classList.add('activa');
+  }
+
+  function volver() {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('activa'));
+    document.getElementById('principal').style.display = 'flex';
+    document.getElementById('loginMsg').className = 'msg';
+    document.getElementById('regMsg').className = 'msg';
+  }
+</script>
+
+<script src="js/main.js"></script>
+</body>
+</html>

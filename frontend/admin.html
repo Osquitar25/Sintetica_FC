@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sintética FC – Admin</title>
+  <link rel="stylesheet" href="css/estilos_admin.css">
+</head>
+
+<body>
+<!-- ══════════════ LAYOUT ══════════════ -->
+<div class="admin-layout">
+
+  <!-- ── SIDEBAR ── -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <span>⚽</span>
+      <span class="sidebar-titulo">SINTÉTICA</span>
+    </div>
+    <p class="sidebar-rol">Panel Administrador</p>
+
+    <nav class="sidebar-nav">
+      <div class="nav-item activo" onclick="cambiarSeccion('reservas', this)">
+        <span class="nav-icono">📋</span>
+        <span>Reservas</span>
+      </div>
+      <div class="nav-item" onclick="cambiarSeccion('canchas', this)">
+        <span class="nav-icono">⚽</span>
+        <span>Canchas</span>
+      </div>
+      <div class="nav-item" onclick="cambiarSeccion('usuarios', this)">
+        <span class="nav-icono">👥</span>
+        <span>Usuarios</span>
+      </div>
+      <div class="nav-item" onclick="cambiarSeccion('petos', this)">
+        <span class="nav-icono">👕</span>
+        <span>Petos</span>
+      </div>
+    </nav>
+
+    <div class="sidebar-footer">
+      <span id="adminNombre"></span>
+      <button class="btn-cerrar" onclick="cerrarSesion()">Salir</button>
+    </div>
+  </aside>
+
+  <!-- ── CONTENIDO PRINCIPAL ── -->
+  <main class="admin-main">
+
+    <!-- RESERVAS -->
+    <section class="seccion activo" id="sec-reservas">
+      <div class="sec-header">
+        <h2 class="sec-titulo">📋 Reservas</h2>
+        <button class="btn btn-verde" onclick="cargarReservas()">↻ Actualizar</button>
+      </div>
+      <div class="filtros">
+        <select id="filtroEstado" class="select-custom" onchange="cargarReservas()">
+          <option value="">Todos los estados</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Confirmada">Confirmada</option>
+          <option value="Cancelada">Cancelada</option>
+          <option value="Completada">Completada</option>
+        </select>
+      </div>
+      <div id="tabla-reservas" class="tabla-container"></div>
+    </section>
+
+    <!-- CANCHAS -->
+    <section class="seccion" id="sec-canchas">
+      <div class="sec-header">
+        <h2 class="sec-titulo">⚽ Canchas</h2>
+        <button class="btn btn-verde" onclick="cargarCanchasAdmin()">↻ Actualizar</button>
+      </div>
+      <div id="tabla-canchas" class="tabla-container"></div>
+    </section>
+
+    <!-- USUARIOS -->
+    <section class="seccion" id="sec-usuarios">
+      <div class="sec-header">
+        <h2 class="sec-titulo">👥 Usuarios</h2>
+        <button class="btn btn-verde" onclick="cargarUsuarios()">↻ Actualizar</button>
+      </div>
+      <div id="tabla-usuarios" class="tabla-container"></div>
+    </section>
+
+    <!-- PETOS -->
+    <section class="seccion" id="sec-petos">
+      <div class="sec-header">
+        <h2 class="sec-titulo">👕 Préstamos de Petos</h2>
+        <button class="btn btn-verde" onclick="cargarPetosAdmin()">↻ Actualizar</button>
+      </div>
+      <div id="tabla-petos" class="tabla-container"></div>
+    </section>
+
+  </main>
+</div>
+
+<script src="js/main.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

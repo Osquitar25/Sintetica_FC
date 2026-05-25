@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Sintética FC – Reservar</title>
+  <link rel="stylesheet" href="css/estilos_for.css">
+  <link rel="stylesheet" href="css/estilos_res.css">
+</head>
+<body>
+
+<!-- ══════════════ NAVBAR ══════════════ -->
+<nav class="navbar">
+  <div class="nav-logo">⚽ <span>SINTÉTICA</span></div>
+  <div class="nav-usuario">
+    <button class="btn-nav" onclick="verMisReservas()">📋 Mis Reservas</button>
+    <span id="navNombre"></span>
+    <button class="btn-cerrar" onclick="cerrarSesion()">Cerrar sesión</button>
+  </div>
+</nav>
+
+<!-- ══════════════ CONTENIDO ══════════════ -->
+<div class="reserva-container">
+
+  <!-- Indicador de pasos -->
+  <div class="pasos">
+    <div class="paso activo" id="paso-ind-1">
+      <div class="paso-num">1</div>
+      <div class="paso-label">Cancha</div>
+    </div>
+    <div class="paso-linea"></div>
+    <div class="paso" id="paso-ind-2">
+      <div class="paso-num">2</div>
+      <div class="paso-label">Horario</div>
+    </div>
+    <div class="paso-linea"></div>
+    <div class="paso" id="paso-ind-3">
+      <div class="paso-num">3</div>
+      <div class="paso-label">Petos</div>
+    </div>
+    <div class="paso-linea"></div>
+    <div class="paso" id="paso-ind-4">
+      <div class="paso-num">4</div>
+      <div class="paso-label">Confirmar</div>
+    </div>
+  </div>
+
+  <!-- ── PASO 1: Seleccionar cancha ── -->
+  <div class="step-content activo" id="step-1">
+    <h2 class="step-titulo">Selecciona una cancha</h2>
+    <p class="step-sub">Elige el tipo de cancha que necesitas</p>
+    <div id="lista-canchas" class="lista-canchas"></div>
+  </div>
+
+  <!-- ── PASO 2: Seleccionar horario ── -->
+  <div class="step-content" id="step-2">
+    <h2 class="step-titulo">Selecciona fecha y horario</h2>
+    <p class="step-sub">Elige el día y la hora disponible</p>
+
+    <div class="fecha-selector">
+      <label>Fecha de reserva</label>
+      <input type="date" id="fechaReserva" onchange="cargarHorarios()">
+    </div>
+
+    <div id="lista-horarios" class="lista-horarios"></div>
+
+    <div class="step-btns">
+      <button class="btn btn-secondary" onclick="irPaso(1)">← Volver</button>
+    </div>
+  </div>
+
+  <!-- ── PASO 3: Petos ── -->
+  <div class="step-content" id="step-3">
+    <h2 class="step-titulo">¿Necesitas petos?</h2>
+    <p class="step-sub">Préstamo incluido sin costo adicional</p>
+
+    <div class="petos-opciones">
+      <div class="peto-opcion" id="opt-no" onclick="seleccionarPeto(false)">
+        <span class="peto-icono">🚫</span>
+        <span class="peto-label">No necesito</span>
+      </div>
+      <div class="peto-opcion" id="opt-si" onclick="seleccionarPeto(true)">
+        <span class="peto-icono">👕</span>
+        <span class="peto-label">Sí, quiero petos</span>
+      </div>
+    </div>
+
+    <div id="petos-detalle" style="display:none">
+      <div class="campo" style="margin-top:20px">
+        <label>Color de peto</label>
+        <select id="petosSelect" class="select-custom" onchange="actualizarCantidadMax()">
+          <option value="">-- Selecciona --</option>
+        </select>
+      </div>
+      <div class="campo">
+        <label>Cantidad</label>
+        <input type="number" id="petosCantidad" min="1" value="1" class="select-custom">
+      </div>
+    </div>
+
+    <div class="step-btns">
+      <button class="btn btn-secondary" onclick="irPaso(2)">← Volver</button>
+      <button class="btn btn-verde" onclick="irPaso(4)">Siguiente →</button>
+    </div>
+  </div>
+
+  <!-- ── PASO 4: Confirmar ── -->
+  <div class="step-content" id="step-4">
+    <h2 class="step-titulo">Confirma tu reserva</h2>
+    <p class="step-sub">Revisa los detalles antes de confirmar</p>
+
+    <div class="resumen">
+      <div class="resumen-fila">
+        <span class="resumen-label">Cancha</span>
+        <span class="resumen-valor" id="res-cancha">—</span>
+      </div>
+      <div class="resumen-fila">
+        <span class="resumen-label">Tipo</span>
+        <span class="resumen-valor" id="res-tipo">—</span>
+      </div>
+      <div class="resumen-fila">
+        <span class="resumen-label">Fecha</span>
+        <span class="resumen-valor" id="res-fecha">—</span>
+      </div>
+      <div class="resumen-fila">
+        <span class="resumen-label">Horario</span>
+        <span class="resumen-valor" id="res-horario">—</span>
+      </div>
+      <div class="resumen-fila">
+        <span class="resumen-label">Petos</span>
+        <span class="resumen-valor" id="res-petos">—</span>
+      </div>
+      <div class="resumen-fila total">
+        <span class="resumen-label">Total</span>
+        <span class="resumen-valor" id="res-total">—</span>
+      </div>
+    </div>
+
+    <div id="confirmMsg" class="msg" style="margin-top:16px"></div>
+
+    <div class="step-btns">
+      <button class="btn btn-secondary" onclick="irPaso(3)">← Volver</button>
+      <button class="btn btn-verde" onclick="confirmarReserva()">✅ Confirmar</button>
+    </div>
+  </div>
+</div>
+
+<div id="mis-reservas-panel" style="display:none">
+  <div class="reserva-container">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:24px">
+      <h2 class="step-titulo">📋 Mis Reservas</h2>
+      <button class="btn btn-secondary" onclick="volverAReservar()">← Volver</button>
+    </div>
+    <div id="lista-mis-reservas" class="tabla-container"></div>
+  </div>
+</div>
+<script src="js/main.js"></script>
+<script src="js/reservas.js"></script>
+</body>
+</html>

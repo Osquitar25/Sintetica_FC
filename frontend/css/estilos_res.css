@@ -1,0 +1,350 @@
+
+/* ── NAVBAR ── */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 60px;
+  background: #111;
+  border-bottom: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  z-index: 100;
+}
+
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 22px;
+  letter-spacing: 3px;
+  color: var(--verde);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-usuario {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 13px;
+  color: var(--texto-gris);
+}
+
+.btn-cerrar {
+  background: var(--gris2);
+  color: var(--texto-gris);
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-cerrar:hover { background: #ff5555; color: white; }
+
+/* ── CONTENEDOR PRINCIPAL ── */
+.reserva-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 90px 20px 40px;
+}
+
+/* ── INDICADOR DE PASOS ── */
+.pasos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  gap: 0;
+}
+
+.paso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.paso-num {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gris2);
+  color: var(--texto-gris);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 16px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.paso-label {
+  font-size: 11px;
+  color: var(--texto-gris);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.paso.activo .paso-num  { background: var(--verde); color: var(--negro); }
+.paso.activo .paso-label { color: var(--verde); }
+.paso.completo .paso-num { background: var(--verde-oscuro); color: white; }
+
+.paso-linea {
+  flex: 1;
+  height: 2px;
+  background: var(--gris2);
+  margin: 0 8px;
+  margin-bottom: 22px;
+  min-width: 40px;
+  transition: background 0.3s;
+}
+
+.paso-linea.completo { background: var(--verde-oscuro); }
+
+/* ── CONTENIDO DE CADA PASO ── */
+.step-content { display: none; }
+.step-content.activo { display: block; }
+
+.step-titulo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 28px;
+  letter-spacing: 3px;
+  color: var(--verde);
+  margin-bottom: 4px;
+}
+
+.step-sub {
+  font-size: 13px;
+  color: var(--texto-gris);
+  margin-bottom: 24px;
+}
+
+/* ── LISTA DE CANCHAS ── */
+.lista-canchas {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cancha-item {
+  background: var(--gris);
+  border: 1px solid var(--gris2);
+  border-radius: 14px;
+  padding: 18px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.cancha-item:hover {
+  border-color: var(--verde);
+  box-shadow: 0 4px 20px rgba(0,200,83,0.12);
+  transform: translateX(4px);
+}
+
+.cancha-item.seleccionado {
+  border-color: var(--verde);
+  background: rgba(0,200,83,0.06);
+}
+
+.cancha-info { display: flex; flex-direction: column; gap: 4px; }
+
+.cancha-nombre {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 18px;
+  letter-spacing: 2px;
+  color: var(--blanco);
+}
+
+.cancha-detalles {
+  font-size: 12px;
+  color: var(--texto-gris);
+}
+
+.cancha-precio {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 20px;
+  color: var(--verde);
+  letter-spacing: 1px;
+}
+
+/* ── SELECTOR DE FECHA ── */
+.fecha-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.fecha-selector label {
+  font-size: 12px;
+  color: var(--texto-gris);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.fecha-selector input[type="date"] {
+  background: var(--gris2);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--blanco);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  outline: none;
+  max-width: 220px;
+  transition: border-color 0.2s;
+}
+
+.fecha-selector input[type="date"]:focus {
+  border-color: var(--verde);
+}
+
+/* ── LISTA DE HORARIOS ── */
+.lista-horarios {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.horario-item {
+  background: var(--gris);
+  border: 1px solid var(--gris2);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  cursor: pointer;
+  font-size: 13px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.horario-item:hover { border-color: var(--verde); }
+.horario-item.seleccionado { border-color: var(--verde); background: rgba(0,200,83,0.08); color: var(--verde); }
+.horario-item.ocupado { opacity: 0.35; cursor: not-allowed; text-decoration: line-through; }
+
+/* ── PETOS ── */
+.petos-opciones {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 10px;
+}
+
+.peto-opcion {
+  flex: 1;
+  background: var(--gris);
+  border: 1px solid var(--gris2);
+  border-radius: 14px;
+  padding: 24px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.peto-opcion:hover { border-color: var(--verde); }
+.peto-opcion.seleccionado { border-color: var(--verde); background: rgba(0,200,83,0.06); }
+
+.peto-icono { font-size: 32px; }
+.peto-label { font-size: 13px; color: var(--texto-gris); }
+
+.select-custom {
+  background: var(--gris2);
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 12px 14px;
+  color: var(--blanco);
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  outline: none;
+  width: 100%;
+  transition: border-color 0.2s;
+}
+
+.select-custom:focus { border-color: var(--verde); }
+
+/* ── RESUMEN ── */
+.resumen {
+  background: var(--gris);
+  border: 1px solid var(--gris2);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--gris2);
+}
+
+.resumen-fila:last-child { border-bottom: none; }
+.resumen-fila.total { background: rgba(0,200,83,0.06); }
+
+.resumen-label {
+  font-size: 12px;
+  color: var(--texto-gris);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resumen-valor { font-size: 14px; font-weight: 600; color: var(--blanco); }
+.resumen-fila.total .resumen-valor { color: var(--verde); font-size: 18px; font-family: 'Bebas Neue', sans-serif; letter-spacing: 2px; }
+
+/* ── BOTONES DE NAVEGACIÓN ── */
+.step-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.btn-nav {
+  background: var(--gris2);
+  color: var(--texto-gris);
+  border: none;
+  border-radius: 8px;
+  padding: 7px 14px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.btn-nav:hover { background: var(--verde); color: var(--negro); }
+
+.tabla-container {
+  background: var(--gris);
+  border: 1px solid #222;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+thead { background: #1f1f1f; }
+thead th { padding: 14px 16px; text-align: left; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--texto-gris); }
+tbody tr { border-top: 1px solid #222; }
+tbody tr:hover { background: rgba(255,255,255,0.02); }
+tbody td { padding: 13px 16px; color: var(--blanco); vertical-align: middle; }
+
+.badge { display: inline-block; padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
+.badge-pendiente  { background: rgba(255,180,0,0.15);   color: #ffb400; }
+.badge-confirmada { background: rgba(0,200,83,0.15);    color: var(--verde); }
+.badge-cancelada  { background: rgba(255,50,50,0.15);   color: #ff5555; }
+.badge-completada { background: rgba(100,100,255,0.15); color: #8888ff; }
+
+.btn-accion { padding: 6px 12px; border: none; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 12px; cursor: pointer; margin-right: 4px; }
+.btn-cancelar { background: rgba(255,50,50,0.2); color: #ff5555; }
+/* Tabla responsive */
+.tabla-container {
+  overflow-x: auto;
+}
