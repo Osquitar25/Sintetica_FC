@@ -117,7 +117,7 @@ app.get('/api/perfil', verificarToken, (req, res) => {
 app.get('/api/canchas', (req, res) => {
   db.query(
     `SELECT c.id_cancha, c.nombre_cancha, c.descripcion, c.precio_por_hora,
-            tc.nombre_tipo, tc.NOMBRE_JUGADORES, tc.dimensiones,
+            tc.nombre_tipo, tc.nombre_jugadores, tc.dimensiones,
             ec.nombre_estado
      FROM cancha c
      JOIN tipo_cancha tc ON c.id_tipo_cancha = tc.id_tipo_cancha
@@ -288,7 +288,7 @@ app.put('/api/admin/reservas/:id', verificarToken, (req, res) => {
 app.get('/api/admin/canchas', verificarToken, (req, res) => {
   db.query(
     `SELECT c.id_cancha, c.nombre_cancha, c.descripcion, c.precio_por_hora,
-            tc.nombre_tipo, tc.NOMBRE_JUGADORES, tc.dimensiones,
+            tc.nombre_tipo, tc.nombre_jugadores, tc.dimensiones,
             ec.nombre_estado, c.id_estado_cancha
      FROM cancha c
      JOIN tipo_cancha tc ON c.id_tipo_cancha = tc.id_tipo_cancha

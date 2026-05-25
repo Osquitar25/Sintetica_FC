@@ -55,7 +55,7 @@ async function cargarCanchas() {
       div.innerHTML = `
         <div class="cancha-info">
           <span class="cancha-nombre">${c.nombre_cancha}</span>
-          <span class="cancha-detalles">${c.nombre_tipo} · ${c.NOMBRE_JUGADORES} jugadores · ${c.dimensiones}</span>
+          <span class="cancha-detalles">${c.nombre_tipo} · ${c.nombre_jugadores} jugadores · ${c.dimensiones}</span>
         </div>
         <span class="cancha-precio">$${Number(c.precio_por_hora).toLocaleString('es-CO')}/hr</span>
       `;
