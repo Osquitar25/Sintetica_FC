@@ -222,7 +222,7 @@ async function confirmarReserva() {
       reserva.petos = null;
       irPaso(1);
       cargarCanchas();
-    }, 2500);
+    }, 500);
 
   } catch {
     mostrarMsg('confirmMsg', 'No se pudo conectar con el servidor.', 'error');

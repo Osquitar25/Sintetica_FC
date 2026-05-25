@@ -33,16 +33,16 @@ body {
   gap: 10px;
   position: relative;
   padding: 40px 20px;
+  background-image: url('../img/cancha.png');
+  background-size: cover;
+  background-position: center;
 }
 
 #principal::before {
   content: '';
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,200,83,0.07) 0%, transparent 70%),
-    repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.02) 48px, rgba(255,255,255,0.02) 50px),
-    repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,0.02) 48px, rgba(255,255,255,0.02) 50px);
+  background: rgba(0, 0, 0, 0.65);
   pointer-events: none;
 }
 
