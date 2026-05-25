@@ -269,3 +269,51 @@ tbody td {
 .btn:hover   { transform: scale(1.03); }
 .btn-verde   { background: var(--verde); color: var(--negro); }
 .btn-secondary { background: var(--gris2); color: var(--texto-gris); }
+
+/* ── RESPONSIVE MÓVIL ── */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 12px;
+    border-right: none;
+    border-bottom: 1px solid #222;
+  }
+
+  .sidebar-logo { margin-bottom: 0; }
+  .sidebar-rol { display: none; }
+
+  .sidebar-nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+    gap: 6px;
+  }
+
+  .nav-item {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .sidebar-footer {
+    flex-direction: row;
+    align-items: center;
+    border-top: none;
+    padding: 8px 0 0 0;
+    width: 100%;
+  }
+
+  .admin-main {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  table { font-size: 11px; }
+  thead th { padding: 10px 8px; }
+  tbody td { padding: 10px 8px; }
+
+  .sec-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+}

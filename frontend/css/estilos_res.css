@@ -348,3 +348,37 @@ tbody td { padding: 13px 16px; color: var(--blanco); vertical-align: middle; }
 .tabla-container {
   overflow-x: auto;
 }
+
+/* ── RESPONSIVE MÓVIL ── */
+@media (max-width: 600px) {
+  .navbar { padding: 0 16px; }
+  .nav-logo { font-size: 16px; }
+  .nav-usuario { gap: 8px; }
+  .btn-nav { font-size: 11px; padding: 6px 10px; }
+  .btn-cerrar { font-size: 11px; padding: 6px 10px; }
+
+  .reserva-container { padding: 80px 14px 30px; }
+
+  .pasos { gap: 0; }
+  .paso-num { width: 28px; height: 28px; font-size: 13px; }
+  .paso-label { font-size: 9px; }
+  .paso-linea { min-width: 20px; }
+
+  .step-titulo { font-size: 22px; }
+
+  .cancha-item { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .cancha-precio { align-self: flex-end; }
+
+  .lista-horarios { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); }
+
+  .petos-opciones { flex-direction: column; }
+
+  .resumen-fila { flex-direction: column; align-items: flex-start; gap: 4px; }
+
+  .step-btns { flex-direction: column; }
+  .step-btns .btn { width: 100%; }
+
+  table { font-size: 11px; }
+  thead th { padding: 10px 8px; }
+  tbody td { padding: 10px 8px; }
+}
