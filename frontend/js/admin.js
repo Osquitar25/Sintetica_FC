@@ -136,6 +136,8 @@ async function cargarCanchasAdmin() {
             <th>Precio/hr</th>
             <th>Estado</th>
             <th>Acciones</th>
+            <th>Sede</th>
+            <th>Cesped</th>
           </tr>
         </thead>
         <tbody>
@@ -153,6 +155,8 @@ async function cargarCanchasAdmin() {
                 ${c.id_estado_cancha === 1 ? `<button class="btn-accion btn-deshabilitar" onclick="cambiarEstadoCancha(${c.id_cancha}, 2)">Mantenimiento</button>` : ''}
                 ${c.id_estado_cancha !== 3 ? `<button class="btn-accion btn-cancelar" onclick="cambiarEstadoCancha(${c.id_cancha}, 3)">Inhabilitar</button>` : ''}
               </td>
+              <td>${c.nombre_sede || '—'}</td>
+              <td>${c.tipo_cesped || '—'}</td>
             </tr>
           `).join('')}
         </tbody>
@@ -267,3 +271,4 @@ async function cargarPetosAdmin() {
     contenedor.innerHTML = '<div class="vacio">Error al cargar petos.</div>';
   }
 }
+

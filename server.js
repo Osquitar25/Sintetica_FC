@@ -117,11 +117,13 @@ app.get('/api/perfil', verificarToken, (req, res) => {
 app.get('/api/canchas', (req, res) => {
   db.query(
     `SELECT c.id_cancha, c.nombre_cancha, c.descripcion, c.precio_por_hora,
+            c.tipo_cesped, s.nombre_sede,
             tc.nombre_tipo, tc.nombre_jugadores, tc.dimensiones,
             ec.nombre_estado
      FROM cancha c
      JOIN tipo_cancha tc ON c.id_tipo_cancha = tc.id_tipo_cancha
      JOIN estado_cancha ec ON c.id_estado_cancha = ec.id_estado_cancha
+     LEFT JOIN sede s ON c.id_sede = s.id_sede
      WHERE ec.nombre_estado = 'Disponible'`,
     (err, results) => {
       if (err) return res.status(500).json({ mensaje: 'Error al obtener canchas' });
@@ -288,11 +290,13 @@ app.put('/api/admin/reservas/:id', verificarToken, (req, res) => {
 app.get('/api/admin/canchas', verificarToken, (req, res) => {
   db.query(
     `SELECT c.id_cancha, c.nombre_cancha, c.descripcion, c.precio_por_hora,
+            c.tipo_cesped, c.id_sede, c.id_estado_cancha,
             tc.nombre_tipo, tc.nombre_jugadores, tc.dimensiones,
-            ec.nombre_estado, c.id_estado_cancha
+            ec.nombre_estado, s.nombre_sede
      FROM cancha c
      JOIN tipo_cancha tc ON c.id_tipo_cancha = tc.id_tipo_cancha
-     JOIN estado_cancha ec ON c.id_estado_cancha = ec.id_estado_cancha`,
+     JOIN estado_cancha ec ON c.id_estado_cancha = ec.id_estado_cancha
+     LEFT JOIN sede s ON c.id_sede = s.id_sede`,
     (err, results) => {
       if (err) return res.status(500).json({ mensaje: 'Error al obtener canchas' });
       res.json(results);
@@ -390,7 +394,6 @@ app.put('/api/mis-reservas/:id/cancelar', verificarToken, (req, res) => {
     }
   );
 });
-
 app.get('/', (req, res) => {
   res.redirect('/formulario.html');
 });

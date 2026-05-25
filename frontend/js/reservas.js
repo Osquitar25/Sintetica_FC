@@ -53,11 +53,12 @@ async function cargarCanchas() {
       const div = document.createElement('div');
       div.className = 'cancha-item';
       div.innerHTML = `
-        <div class="cancha-info">
-          <span class="cancha-nombre">${c.nombre_cancha}</span>
-          <span class="cancha-detalles">${c.nombre_tipo} · ${c.nombre_jugadores} jugadores · ${c.dimensiones}</span>
-        </div>
-        <span class="cancha-precio">$${Number(c.precio_por_hora).toLocaleString('es-CO')}/hr</span>
+      <div class="cancha-info">
+      <span class="cancha-nombre">${c.nombre_cancha}</span>
+      <span class="cancha-detalles">${c.nombre_tipo} · ${c.nombre_jugadores} jugadores · ${c.dimensiones}</span>
+      <span class="cancha-detalles">🌿 ${c.tipo_cesped} · 📍 ${c.nombre_sede || 'Sin sede'}</span>
+      </div>
+      <span class="cancha-precio">$${Number(c.precio_por_hora).toLocaleString('es-CO')}/hr</span>
       `;
       div.onclick = () => seleccionarCancha(c, div);
       contenedor.appendChild(div);
