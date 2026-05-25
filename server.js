@@ -390,6 +390,7 @@ app.put('/api/mis-reservas/:id/cancelar', verificarToken, (req, res) => {
     }
   );
 });
-app.listen(3001, '0.0.0.0', () => {
-  console.log('🚀 Servidor corriendo en http://127.0.0.1:3001/formulario.html');
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`🚀 Servidor corriendo en el puerto ${PORT}`);
 });
