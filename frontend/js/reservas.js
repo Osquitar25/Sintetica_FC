@@ -113,6 +113,7 @@ function seleccionarHorario(horario, el) {
   document.querySelectorAll('.horario-item').forEach(i => i.classList.remove('seleccionado'));
   el.classList.add('seleccionado');
   reserva.horario = horario;
+  reserva.fecha = document.getElementById('fechaReserva').value;
   setTimeout(() => irPaso(3), 300);
 }
 
