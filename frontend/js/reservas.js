@@ -213,7 +213,7 @@ async function confirmarReserva() {
       return mostrarMsg('confirmMsg', data.mensaje || 'Error al crear reserva.', 'error');
     }
 
-    mostrarMsg('confirmMsg', `✅ ¡Reserva confirmada! ID: ${data.id_reserva}`, 'ok');
+    mostrarMsg('confirmMsg', `✅ ¡Reserva confirmada!`, 'ok');
 
     setTimeout(() => {
       // Reiniciar wizard
