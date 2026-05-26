@@ -40,8 +40,8 @@ body {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(35, 21, 163, 0.07) 0%, transparent 70%),
-    repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.02) 48px, rgba(255,255,255,0.02) 50px),
+    radial-gradient(ellipse 60% 40% at 50% 50%, rgba(0,200,83,0.07) 0%, transparent 70%),
+    repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(214, 10, 10, 0.02) 48px, rgba(255,255,255,0.02) 50px),
     repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,0.02) 48px, rgba(255,255,255,0.02) 50px);
   pointer-events: none;
 }
@@ -58,7 +58,7 @@ body {
 .logo-icono {
   font-size: 54px;
   line-height: 1;
-  filter: drop-shadow(0 0 20px rgba(0,200,83,0.5));
+  filter: drop-shadow(0 0 20px rgba(31, 23, 151, 0.5));
 }
 
 .logo-titulo {
