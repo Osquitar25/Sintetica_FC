@@ -134,21 +134,23 @@ app.get('/api/canchas', (req, res) => {
 // ─── HORARIOS POR CANCHA Y FECHA ────────────────────────────────────
 app.get('/api/horarios/:id_cancha/:fecha', (req, res) => {
   const { id_cancha, fecha } = req.params;
-  const dias = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const dias = ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sábado'];
   const diaSemana = dias[new Date(fecha).getDay()];
 
   db.query(
     `SELECT h.id_horario, h.hora_inicio, h.hora_fin, h.disponible,
-            CASE WHEN r.id_reserva IS NOT NULL THEN 0 ELSE 1 END AS libre
+            CASE WHEN EXISTS (
+              SELECT 1 FROM reserva r 
+              WHERE r.id_cancha = ?
+              AND r.fecha_reserva = ?
+              AND r.hora_inicio = h.hora_inicio
+              AND r.id_estado_reserva IN (1,2)
+            ) THEN 0 ELSE 1 END AS libre
      FROM horario_disponible h
      JOIN dia_semana d ON h.id_dia_semana = d.id_dia_semana
-     LEFT JOIN reserva r ON r.id_cancha = h.id_cancha
-       AND r.fecha_reserva = ?
-       AND r.hora_inicio = h.hora_inicio
-       AND r.id_estado_reserva IN (1,2)
      WHERE h.id_cancha = ? AND d.nombre_dia = ?
      ORDER BY h.hora_inicio`,
-    [fecha, id_cancha, diaSemana],
+    [id_cancha, fecha, id_cancha, diaSemana],
     (err, results) => {
       if (err) return res.status(500).json({ mensaje: 'Error al obtener horarios' });
       res.json(results);
